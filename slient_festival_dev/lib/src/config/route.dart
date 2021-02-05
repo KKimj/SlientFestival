@@ -21,7 +21,8 @@ class Routes {
     switch (pathElements[1]) {
       case "DetailPage":
         return CustomRoute<bool>(
-            builder: (BuildContext context) => DetailPage(model: settings.arguments,));
+            builder: (BuildContext context) => HomePage());
+//            builder: (BuildContext context) => DetailPage(model: settings.arguments,));
     }
   }
 }
