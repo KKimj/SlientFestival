@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -33,108 +34,81 @@ class _HomePageState extends State<HomePage> {
                   ],
                   isScrollable: true,
                 )),
-            body: TabBarView(children: [
-              GridView.builder(
-                itemCount: 50,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                itemBuilder: (BuildContext context, int index) {
-                  //if (index < 50)
-                  return InkWell(//inkwell로 클릭 동작을 하게 만들었습니다.
-                    child: Container(
-                      padding: EdgeInsets.all(20.0),
-                      child: Center(
-                        child: GridTile(
-                          footer: Text(
-                            'Item $index',
-                            textAlign: TextAlign.center,
-                          ),
-                          header: Text(
-                            'SubItem $index',
-                            textAlign: TextAlign.center,
+            body: SafeArea(
+              child: TabBarView(children: [
+                WebView(
+                  initialUrl: 'https://react-naver-map-4ymdex148.vercel.app/',
+                  javascriptMode: JavascriptMode.unrestricted,
+                ),
+          GridView.builder(
+                  itemCount: 50,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                  itemBuilder: (BuildContext context, int index) {
+                    //if (index < 50)
+                    return InkWell(//inkwell로 클릭 동작을 하게 만들었습니다.
+                      child: Container(
+                        padding: EdgeInsets.all(20.0),
+                        child: Center(
+                          child: GridTile(
+                            footer: Text(
+                              'Item $index',
+                              textAlign: TextAlign.center,
+                            ),
+                            header: Text(
+                              'SubItem $index',
+                              textAlign: TextAlign.center,
+                            ),
+
+                            child: Image.asset("test/test_logo2.jpg"),//헬스케어 앱의 이미지를 가져다 넣어보려 하였으나 실패하였습니다.ㅠㅠ
                           ),
 
-                          child: Image.asset("test/test_logo2.jpg"),//헬스케어 앱의 이미지를 가져다 넣어보려 하였으나 실패하였습니다.ㅠㅠ
                         ),
+                        margin: EdgeInsets.all(1.0),
 
                       ),
-                      margin: EdgeInsets.all(1.0),
+                      onTap: (){
+                        print("Hello");
+                      },
+                    );
+                  },
+                ),
+                GridView.builder(
+                  itemCount: 50,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                  itemBuilder: (BuildContext context, int index) {
+                    //if (index < 50)
+                    return InkWell(//inkwell로 클릭 동작을 하게 만들었습니다.
+                      child: Container(
+                        padding: EdgeInsets.all(20.0),
+                        child: Center(
+                          child: GridTile(
+                            footer: Text(
+                              'Item $index',
+                              textAlign: TextAlign.center,
+                            ),
+                            header: Text(
+                              'SubItem $index',
+                              textAlign: TextAlign.center,
+                            ),
 
-                    ),
-                    onTap: (){
-                      print("Hello");
-                    },
-                  );
-                },
-              ),
-              GridView.builder(
-                itemCount: 50,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                itemBuilder: (BuildContext context, int index) {
-                  //if (index < 50)
-                  return InkWell(//inkwell로 클릭 동작을 하게 만들었습니다.
-                    child: Container(
-                      padding: EdgeInsets.all(20.0),
-                      child: Center(
-                        child: GridTile(
-                          footer: Text(
-                            'Item $index',
-                            textAlign: TextAlign.center,
-                          ),
-                          header: Text(
-                            'SubItem $index',
-                            textAlign: TextAlign.center,
+                            child: Image.asset("test/test_logo2.jpg"),//헬스케어 앱의 이미지를 가져다 넣어보려 하였으나 실패하였습니다.ㅠㅠ
                           ),
 
-                          child: Image.asset("test/test_logo2.jpg"),//헬스케어 앱의 이미지를 가져다 넣어보려 하였으나 실패하였습니다.ㅠㅠ
                         ),
+                        margin: EdgeInsets.all(1.0),
 
                       ),
-                      margin: EdgeInsets.all(1.0),
+                      onTap: (){
+                        print("Hello");
+                      },
+                    );
+                  },
+                ),
+              ]
 
-                    ),
-                    onTap: (){
-                      print("Hello");
-                    },
-                  );
-                },
               ),
-              GridView.builder(
-                itemCount: 50,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                itemBuilder: (BuildContext context, int index) {
-                  //if (index < 50)
-                  return InkWell(//inkwell로 클릭 동작을 하게 만들었습니다.
-                    child: Container(
-                      padding: EdgeInsets.all(20.0),
-                      child: Center(
-                        child: GridTile(
-                          footer: Text(
-                            'Item $index',
-                            textAlign: TextAlign.center,
-                          ),
-                          header: Text(
-                            'SubItem $index',
-                            textAlign: TextAlign.center,
-                          ),
-
-                          child: Image.asset("test/test_logo2.jpg"),//헬스케어 앱의 이미지를 가져다 넣어보려 하였으나 실패하였습니다.ㅠㅠ
-                        ),
-
-                      ),
-                      margin: EdgeInsets.all(1.0),
-
-                    ),
-                    onTap: (){
-                      print("Hello");
-                    },
-                  );
-                },
-              ),
-            ]
-
             ),
           bottomNavigationBar: TabBar(tabs: [
               Tab(
