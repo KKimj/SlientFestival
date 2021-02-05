@@ -133,10 +133,7 @@ exports.reviews = functions.https.onRequest( (request, response) =>{
             let comment= response.req.body.comment;
             let goodvote= response.req.body.goodvote;
             let badvote= response.req.body.badvote;
-            // let temp_body = response.req.body.temp_body;
-            // let temp_sensor = response.req.body.temp_sensor;
-            // let device_name = response.req.url.split('/')[1];
-            // let time = Date.now();
+            
             admin.firestore().collection('reviews').doc(time.toString()).set({
                 time : time,
                 writer : writer,
@@ -180,21 +177,7 @@ curl -X POST https://us-central1-slientfestival.cloudfunctions.net/users -H "Con
 // curl -X POST http://localhost:5001/slientfestival/us-central1/users -H "Content-Type:application/json"  -d '{"email": "ziun79@gmail.com", "userId" : "kimjj", "userImgUrl" : "google.com/image/abcd", "userName" : "김지지운"}'
 // curl -X POST http://localhost:5001/slientfestival/us-central1/reviews
 // curl -X POST http://localhost:5001/slientfestival/us-central1/reviews -H "Content-Type:application/json"
-curl -X POST http://localhost:5001/slientfestival/us-central1/reviews -H "Content-Type:application/json" \
--d '{ "writer" : 1, \
-    "name" : "24시 국밥”, \
-    "lat" : 37.551229, \
-    "lng" : 126.988205, \
-    "pic_url" : "", \
-    "thumbnail_url" : "", \
-    "communication" : 1,  \
-    "kindness" : 1, \
-    "rating" : 3, \
-    "parking" : 1, \
-    "comment" : "부모님이랑 매일가요. 너무 좋아요.", \
-    "goodvote" : 3, \
-    "badvote" : 3, \
-}'
+curl -X POST https://us-central1-slientfestival.cloudfunctions.net/reviews -H "Content-Type:application/json" -d '{"writer" : 1, "name" : "갈마살롱", "lat" : 36.3511864, "lng" : 127.372438, "pic_url" : "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201112_139%2F1605188645402b2LLN_JPEG%2Fupload_731eaed54b7faaf6abac2c18391d93e1.jpeg", "thumbnail_url" : "https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=https%3A%2F%2Fmyplace-phinf.pstatic.net%2F20201119_294%2F1605774596014HDFw5_JPEG%2Fupload_4e95c071c7a1b4d632648a2c3cce9b1f.jpeg", "communication" : 1, "kindness" : 1, "rating" : 3, "parking" : 1, "comment" : "메뉴들이 맛이 괜찮았어요 근데 카츠산도랑 카레랑 시켰는데 먹다보니 좀 느끼한 느낌", "goodvote" : 5, "badvote" : 3}'
 */
 // curl -X POST http://localhost:5001/slientfestival/us-central1/reviews -H "Content-Type:application/json" -d '{ "writer" : 1, \
 //     "name" : "24시 국밥”, "lat" : 1, "lng" : 1, "pic_url" : "1", "thumbnail_url" : "2", "communication" : 1,  \
