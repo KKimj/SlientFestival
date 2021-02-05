@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:slientfestival/src/config/route.dart';
 import 'package:slientfestival/src/theme/theme.dart';
 
@@ -20,5 +21,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 

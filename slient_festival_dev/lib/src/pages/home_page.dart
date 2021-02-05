@@ -17,7 +17,37 @@ class _HomePageState extends State<HomePage> {
 
         Scaffold
           (
+          bottomNavigationBar: BottomAppBar(
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>
+              [
+                Tab(
+                  icon: Icon(Icons.home),
+                  text: '홈',
+                ),
+                Tab(
+                  icon: Icon(Icons.chat),
+                  text: '홈',
+                ),
+                Tab(
+                  icon: Icon(Icons.fiber_manual_record),
+                  text: '홈',
+                ),
+                Tab(
+                  icon: Icon(Icons.notifications_active),
+                  text: '홈',
+                ),
+                Tab(
+                  icon: Icon(Icons.account_circle),
+                  text: '내정보',
+                ),
 
+              ],
+            ),
+            color: Colors.blueGrey,
+          ),
             appBar: AppBar( //앱 바를 통해 (추천 그룹 정보)로 수정하면 될 것 같습니다.
                 title: Text('조용한 파티'),
                 bottom: TabBar(
@@ -110,31 +140,31 @@ class _HomePageState extends State<HomePage> {
 
               ),
             ),
-          bottomNavigationBar: TabBar(tabs: [
-              Tab(
-                icon: Icon(Icons.home),
-                text: 'home',
-              ),
-              Tab(
-                icon: Icon(Icons.chat),
-                text: 'chat',
-              ),
+//          bottomNavigationBar: TabBar(tabs: [
 //              Tab(
-//                icon: Icon(Icons.add_a_photo),
-//                text: 'add',
+//                icon: Icon(Icons.home),
+//                text: 'home',
 //              ),
-
-                Tab(
-                  icon: Icon(Icons.notifications_active),
-                  text: 'noti',
-                ),
+//              Tab(
+//                icon: Icon(Icons.chat),
+//                text: 'chat',
+//              ),
+////              Tab(
+////                icon: Icon(Icons.add_a_photo),
+////                text: 'add',
+////              ),
+//
 //                Tab(
-//                  icon: Icon(Icons.people),
-//                  text: 'my',
-//                )
-            ],
-            labelColor: Colors.blue,
-          ),
+//                  icon: Icon(Icons.notifications_active),
+//                  text: 'noti',
+//                ),
+////                Tab(
+////                  icon: Icon(Icons.people),
+////                  text: 'my',
+////                )
+//            ],
+//            labelColor: Colors.blue,
+//          ),
 
 
         )
