@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
                       text: '최신',
                     ),
                     Tab(
-                      text: '그룹',
+                      text: '모임',
                     ),
                     Tab(
                       text: '정보',
