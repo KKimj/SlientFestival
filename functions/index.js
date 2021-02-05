@@ -236,10 +236,7 @@ curl -X POST http://localhost:5001/slientfestival/us-central1/reviews -H "Conten
 // --data "image : @sound2.mp3"
 
 
-// curl -X POST https://naveropenapi.apigw.ntruss.com/recog/v1/stt?lang=Kor -H "Content-Type: application/octet-stream"  \
-// -H "X-NCP-APIGW-API-KEY-ID: 03ug1j1c47" \
-// -H "X-NCP-APIGW-API-KEY: yFJ4aQpjR7Evsa7y9ZODgWAg4av0bPTG1uD4fhYG" \
-// --data-binary "@/Users/kkimj/tmp/SlientFestival/voice/abc.mp3"
+
 
 // 작성시간
 // 작성자
