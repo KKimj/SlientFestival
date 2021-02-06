@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slientfestival/src/pages/stt_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,10 +32,19 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(Icons.chat),
                   text: '홈',
                 ),
-                Tab(
-                  icon: Icon(Icons.fiber_manual_record),
-                  text: '홈',
+                RaisedButton(
+                    child: Tab(
+                      icon: Icon(Icons.fiber_manual_record),
+                      text: '바로번역',
+                    ),
+                    onPressed: ()
+                    {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SttPage()));
+                    }
                 ),
+
                 Tab(
                   icon: Icon(Icons.notifications_active),
                   text: '홈',
