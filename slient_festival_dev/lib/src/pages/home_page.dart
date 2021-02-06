@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:slientfestival/src/pages/Feed_page.dart';
+import 'package:slientfestival/src/pages/rating_page.dart';
 import 'package:slientfestival/src/pages/stt_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class HomePage extends StatefulWidget {
@@ -8,6 +11,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  List<String> images = [
+    "https://cdn.pixabay.com/photo/2014/08/20/15/21/good-422550_960_720.jpg",
+    "https://cdn.pixabay.com/photo/2014/11/22/17/36/hands-541830_960_720.jpg",
+    "https://t1.daumcdn.net/cfile/blog/13479E354CCBEE0E48",
+    "http://image.kmib.co.kr/online_image/2020/0324/611711110014397003_1.jpg",
+    "http://www.babytimes.co.kr/news/photo/201405/20140527191019_9621.jpg",
+    "http://www.dtoday.co.kr/news/photo/201704/248870_164618_0639.jpg",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -58,8 +71,9 @@ class _HomePageState extends State<HomePage> {
             ),
             color: Colors.blueGrey,
           ),
+
             appBar: AppBar( //앱 바를 통해 (추천 그룹 정보)로 수정하면 될 것 같습니다.
-                title: Text('조용한 파티'),
+                title: Text('조용한 축제'),
                 bottom: TabBar(
                   tabs: [
                     Tab(
@@ -69,112 +83,85 @@ class _HomePageState extends State<HomePage> {
                       text: '모임',
                     ),
                     Tab(
-                      text: '정보',
+                      text: '피드',
                     ),
                   ],
                   isScrollable: true,
                 )),
             body: SafeArea(
               child: TabBarView(children: [
+
+          GridView.builder(
+                  itemCount: images.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                  itemBuilder: (BuildContext context, int index) {
+                    //if (index < 50)
+                    return InkWell(
+                      child: Container(
+                        padding: EdgeInsets.all(20.0),
+                        child: Center(
+                          child: GridTile(
+                            footer: Text(
+                              'Item $index',
+                              textAlign: TextAlign.center,
+                            ),
+                            header: Text(
+                              'SubItem $index',
+                              textAlign: TextAlign.center,
+                            ),
+
+                            child: Image.network(images[index]),
+                          ),
+
+                        ),
+                        margin: EdgeInsets.all(1.0),
+
+                      ),
+
+                    onTap:(){
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RatingPage())
+                      );
+                    });
+
+                  },
+                ),
                 WebView(
-                  initialUrl: 'https://react-naver-map-4ymdex148.vercel.app/',
+                  initialUrl: 'https://react-naver-map.bluewink.vercel.app/',
                   javascriptMode: JavascriptMode.unrestricted,
                 ),
-          GridView.builder(
-                  itemCount: 50,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemBuilder: (BuildContext context, int index) {
-                    //if (index < 50)
-                    return InkWell(//inkwell로 클릭 동작을 하게 만들었습니다.
-                      child: Container(
-                        padding: EdgeInsets.all(20.0),
-                        child: Center(
-                          child: GridTile(
-                            footer: Text(
-                              'Item $index',
-                              textAlign: TextAlign.center,
-                            ),
-                            header: Text(
-                              'SubItem $index',
-                              textAlign: TextAlign.center,
-                            ),
-
-                            child: Image.asset("test/test_logo2.jpg"),//헬스케어 앱의 이미지를 가져다 넣어보려 하였으나 실패하였습니다.ㅠㅠ
-                          ),
-
-                        ),
-                        margin: EdgeInsets.all(1.0),
-
-                      ),
-                      onTap: (){
-                        print("Hello");
-                      },
-                    );
-                  },
-                ),
-                GridView.builder(
-                  itemCount: 50,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemBuilder: (BuildContext context, int index) {
-                    //if (index < 50)
-                    return InkWell(//inkwell로 클릭 동작을 하게 만들었습니다.
-                      child: Container(
-                        padding: EdgeInsets.all(20.0),
-                        child: Center(
-                          child: GridTile(
-                            footer: Text(
-                              'Item $index',
-                              textAlign: TextAlign.center,
-                            ),
-                            header: Text(
-                              'SubItem $index',
-                              textAlign: TextAlign.center,
-                            ),
-
-                            child: Image.asset("test/test_logo2.jpg"),//헬스케어 앱의 이미지를 가져다 넣어보려 하였으나 실패하였습니다.ㅠㅠ
-                          ),
-
-                        ),
-                        margin: EdgeInsets.all(1.0),
-
-                      ),
-                      onTap: (){
-                        print("Hello");
-                      },
-                    );
-                  },
-                ),
+                Feed(),
               ]
 
               ),
             ),
-//          bottomNavigationBar: TabBar(tabs: [
-//              Tab(
-//                icon: Icon(Icons.home),
-//                text: 'home',
-//              ),
-//              Tab(
-//                icon: Icon(Icons.chat),
-//                text: 'chat',
-//              ),
-////              Tab(
-////                icon: Icon(Icons.add_a_photo),
-////                text: 'add',
-////              ),
+//           bottomNavigationBar: TabBar(tabs: [
+//               Tab(
+//                 icon: Icon(Icons.home),
+//                 text: 'home',
+//               ),
+//               Tab(
+//                 icon: Icon(Icons.chat),
+//                 text: 'chat',
+//               ),
+// //              Tab(
+// //                icon: Icon(Icons.add_a_photo),
+// //                text: 'add',
+// //              ),
 //
-//                Tab(
-//                  icon: Icon(Icons.notifications_active),
-//                  text: 'noti',
-//                ),
-////                Tab(
-////                  icon: Icon(Icons.people),
-////                  text: 'my',
-////                )
-//            ],
-//            labelColor: Colors.blue,
-//          ),
+//                 Tab(
+//                   icon: Icon(Icons.notifications_active),
+//                   text: 'noti',
+//                 ),
+// //                Tab(
+// //                  icon: Icon(Icons.people),
+// //                  text: 'my',
+// //                )
+//             ],
+//             labelColor: Colors.blue,
+//           ),
 
 
         )
